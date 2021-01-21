@@ -15,7 +15,11 @@ RUN composer config --global --auth github-oauth.github.com b442a874523b6f97045e
     composer global require "magento/magento-coding-standard"
 RUN ln -s /root/.composer/vendor/squizlabs/php_codesniffer/bin/phpcs /bin/phpcs && \
     ln -s /root/.composer/vendor/squizlabs/php_codesniffer/bin/phpcbf /bin/phpcbf && \
-    phpcs --config-set installed_paths /root/.composer/vendor/magento/magento-coding-standard,/var/CodeStandard/STCodeStandard/STCodeStandard
+    phpcs --config-set installed_paths /root/.composer/vendor/magento/magento-coding-standard,/var/CodeStandard/STCodeStandard/STCodeStandard && \
+    phpcs --config-set default_standard Magento2,STCodeStandard && \
+    phpcs --config-set tab_width 4 && \
+    phpcs --config-set show_warnings 0 && \
+    phpcs --config-set colors 1 
 VOLUME ["/usr/share/nginx/html", "/var/CodeStandard", "/root/.ssh"]
 WORKDIR /usr/share/nginx/html
 ENTRYPOINT '/bin/bash'
