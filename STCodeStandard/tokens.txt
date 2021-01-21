@@ -1,4 +1,0 @@
-ERROR: The file "/usr/share/nginx/html/STCodeStandard/STCodeStandard/Sniffs/NewLineEndSniff.php" does not exist.
-
-Run "phpcs --help" for usage information
-
