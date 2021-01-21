@@ -1,0 +1,14 @@
+{
+    "name": "st-code-standard/st-code-standard",
+    "description": "Shinetech code standard",
+    "type": "phpcodesniffer-standard",
+    "require": {
+        "squizlabs/php_codesniffer": "^3.5"
+    },
+    "authors": [
+        {
+            "name": "Luo",
+            "email": "luoting@shinetechchina.com"
+        }
+    ]
+}

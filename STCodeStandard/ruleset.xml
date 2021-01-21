@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<ruleset name="STCodeStandard">
+    <description>Shinetech coding standard.</description>
+
+    <rule ref="Generic.PHP.Syntax">
+        <severity>10</severity>
+        <type>error</type>
+    </rule>
+
+    <rule ref="Generic.Files.EndFileNewline">
+        <type>error</type>
+    </rule>
+    <!-- <rule ref="Generic.Files.EndFileNoNewline"/> -->
+
+    <rule ref="Generic.CodeAnalysis.UnconditionalIfStatement">
+        <type>error</type>
+    </rule>
+    <rule ref="Generic.Functions.FunctionCallArgumentSpacing">
+        <type>error</type>
+    </rule>
+    <rule ref="PSR2.Namespaces.NamespaceDeclaration">
+        <type>error</type>
+    </rule>
+
+    <!-- <rule ref="PEAR.Commenting.ClassComment"/> -->
+
+    <rule ref="STCodeStandard.Formatting.BlankLineBeforeReturn">
+        <type>error</type>
+    </rule>
+
+    <rule ref="PSR2.Namespaces.UseDeclaration">
+        <type>error</type>
+    </rule>
+    <rule ref="PSR2.Classes.ClassDeclaration">
+        <type>error</type>
+    </rule>
+    <rule ref="PSR2.Methods.FunctionCallSignature">
+        <type>error</type>
+    </rule>
+    <rule ref="PSR2.Methods.FunctionClosingBrace">
+        <type>error</type>
+    </rule>
+
+    <rule ref="Squiz.Classes.SelfMemberReference">
+        <type>error</type>
+    </rule>
+    <rule ref="Squiz.Functions.FunctionDeclaration">
+        <type>error</type>
+    </rule>
+    <rule ref="Squiz.Functions.MultiLineFunctionDeclaration">
+        <type>error</type>
+    </rule>
+
+    <rule ref="Zend.Files.ClosingTag">
+        <type>error</type>
+    </rule>
+</ruleset>
