@@ -39,7 +39,7 @@ if [ "$FLAG" = "access" ]; then
     if [ $inputpush = 'y' ]; then
         # do git push
         git add .
-        git push
+        git push origin
     fi
 else
     echo "\033[31mYou should fix all errors and try again. current nothing be pushed.\033[0m"
