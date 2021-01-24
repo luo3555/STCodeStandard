@@ -20,9 +20,11 @@ RUN ln -s /root/.composer/vendor/squizlabs/php_codesniffer/bin/phpcs /bin/phpcs 
     phpcs --config-set tab_width 4 && \
     phpcs --config-set show_warnings 0 && \
     phpcs --config-set colors 1 
+COPY vcs.sh /bin/vcs
+RUN chmod +x /bin/vcs
 VOLUME ["/usr/share/nginx/html", "/var/CodeStandard", "/root/.ssh"]
 WORKDIR /usr/share/nginx/html
-ENTRYPOINT '/bin/bash'
+ENTRYPOINT [ "/bin/bash" ]
 
 # how to use
 # 1. build image
