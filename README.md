@@ -9,3 +9,5 @@ docker build -t code_standard .
 ```shell
 docker run -it -v YOUR_SSH_DIR:/root/.ssh -v YOUR_CODE_DIR:/usr/share/nginx/html --rm --name code_standard code_standard
 ```
+
+3. 进入容器后在项目目录下执行 `vcs`
