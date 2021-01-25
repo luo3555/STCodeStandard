@@ -30,4 +30,4 @@ ENTRYPOINT [ "/bin/bash" ]
 # 1. build image
 # docker build -t code_standard .
 # 2. entry container
-# docker run -it -v /home/youaccount/.ssh:/root/.ssh -v /var/www/code:/usr/share/nginx/html --rm --name code_standard code_standard
+# docker run -it -v ${HOME}/.ssh:/root/.ssh -v /var/www/code:/usr/share/nginx/html --rm --name code_standard code_standard
