@@ -1,4 +1,7 @@
 FROM php:7.4
+
+ARG SSH_PRV_KEY
+
 RUN apt-get update -y --fix-missing \
 	&& apt-get install -y \
         git \
@@ -8,6 +11,15 @@ RUN apt-get update -y --fix-missing \
         libmcrypt-dev \
         libpng-dev
 RUN docker-php-ext-install zip
+
+# add e.coding.net to known hosts
+RUN mkdir -p /root/.ssh && ssh-keyscan e.coding.net > /root/.ssh/known_hosts
+
+# Add the keys and set permissions
+RUN echo "$SSH_PRV_KEY" > /root/.ssh/id_rsa && chmod 600 /root/.ssh/id_rsa
+# check if ssh agent is running or not,if not,run
+RUN eval `ssh-agent -s` && ssh-add /root/.ssh/id_rsa
+
 RUN git clone "https://github.com/luo3555/STCodeStandard.git" /var/CodeStandard/STCodeStandard
 RUN curl "https://mirrors.aliyun.com/composer/composer.phar" --output /bin/composer && chmod +x /bin/composer
 RUN composer config --global --auth github-oauth.github.com b442a874523b6f97045e4f6f22d5e13f3bbb6ccf && \
@@ -20,12 +32,15 @@ RUN ln -s /root/.composer/vendor/squizlabs/php_codesniffer/bin/phpcs /bin/phpcs 
     phpcs --config-set tab_width 4 && \
     phpcs --config-set show_warnings 0 && \
     phpcs --config-set colors 1 
-VOLUME ["/usr/share/nginx/html", "/var/CodeStandard", "/root/.ssh"]
+
+# clean cache
+
+VOLUME ["/usr/share/nginx/html", "/var/CodeStandard"]
 WORKDIR /usr/share/nginx/html
 ENTRYPOINT '/bin/bash'
 
 # how to use
 # 1. build image
-# docker build -t code_standard .
+# docker build --build-arg SSH_PRV_KEY="$(cat /home/YOUR_ACCOUNT/.ssh/YOUR_PRIVATE_KEY_FILE_NAME)" -t code_standard .
 # 2. entry container
-# docker run -it -v /home/youaccount/.ssh:/root/.ssh -v /var/www/code:/usr/share/nginx/html --rm --name code_standard code_standard
+# docker run -it -v /var/www/code:/usr/share/nginx/html --rm --name code_standard code_standard
