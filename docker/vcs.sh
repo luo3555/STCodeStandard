@@ -41,7 +41,7 @@ if [ "$GITLIST" ]; then
             # do git push
             git add .
             read -p 'Commit message:' msg
-            git commit -m msg
+            git commit -m "$msg"
             git push origin
         fi
     else
