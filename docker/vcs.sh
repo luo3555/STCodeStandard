@@ -35,11 +35,13 @@ if [ "$GITLIST" ]; then
         if [ $input = 'y' ]; then
             git diff
         fi
-        echo "\033[31mAdd all files and dirs to GIT remotes? if YES will do [$(pwd)/git add . && git push]\033[0m  \033[32;40m[y/n]\033[0m"
+        echo "\033[31mAdd all files and dirs to GIT remotes? if YES will do [$(pwd)/git add . && git commit -m msg && git push]\033[0m  \033[32;40m[y/n]\033[0m"
         read -p ":" inputpush
         if [ $inputpush = 'y' ]; then
             # do git push
             git add .
+            read -p 'Commit message:' msg
+            git commit -m msg
             git push origin
         fi
     else
