@@ -13,7 +13,7 @@ GIT_USE_EMAIL|git config --global user.email 使用的 Email
 YOUR_ACCOUNT|是你当前的用户名，因为 Docker 是在 root 下执行，所以这里要写你用户文件夹的绝对路径
 YOUR_PRIVATE_KEY_FILE_NAME|Git push 用到的私钥
 
-2. 进入容器，在自己用户根目录下找到 `.bashrc` 文件，然后在最末尾添加以下方法。
+2. 不进入容器，在自己用户根目录下找到 `.bashrc` 文件，然后在最末尾添加以下方法。
 
 ```shell
 function vcs() {
